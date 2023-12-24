@@ -12,6 +12,5 @@ class Todo extends Model
         'todolist',
         'status',
         'user_id',
-
     ];
 }

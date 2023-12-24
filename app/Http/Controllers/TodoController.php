@@ -22,11 +22,11 @@ class TodoController extends Controller
             "user_id" => Auth::id(),
             'status' => 'pending',
         ]);
+
         $data = $request->validate([
-            'todos' => 'required',
+            'todolist' => 'required',
             'status' => 'required',
             'user_id' => 'required',
-            'todolist' => 'required',
         ]);
 
         $new_todo = Todo::create($data);
@@ -37,7 +37,7 @@ class TodoController extends Controller
     {
         // $todo->update(['status' => 'completed']);
         $data = $request->validate([
-            'todos' => 'required',
+            'todolist' => 'required',
         ]);
 
         $todo->update($data);
@@ -59,7 +59,7 @@ class TodoController extends Controller
 
     function edit(Todo  $todo)
     {
-        return view('todos.edit', ["todo" => $todo]);
+        return view('todo.edit', ["todo" => $todo]);
     }
     function destroy(Todo  $todo)
     {

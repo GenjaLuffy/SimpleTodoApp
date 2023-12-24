@@ -35,7 +35,7 @@
         @endif
 
 
-        <div class="grow ">
+        <div class="grow w-ful">
 
             {{ view('todo.create') }}
 
@@ -47,8 +47,8 @@
                         @foreach ($todos as $todo)
                             <li class="dark:text-gray-400 mb-5">
 
-                                Status: {{ $todos->status }} <br>
-                                Task: {{ $todos->todo }}
+                                Status: {{ $todo->status }} <br>
+                                Task: {{ $todo->todolist }}
 
                                 <div class="flex gap-2">
                                     <a href="{{ route('todo.edit', ['todo' => $todo]) }}"
@@ -59,10 +59,10 @@
                                         @method('post')
 
                                         <input type="hidden" name="todo_status"
-                                            value="{{ $todos->status == 'pending' ? 'completed' : 'pending' }}">
+                                            value="{{ $todo->status == 'pending' ? 'completed' : 'pending' }}">
                                         <button type="submit"
                                             class="mt-3 inline-flex items-center px-4 py-2 bg-gray-800 dark:bg-gray-200 border border-transparent rounded-md font-semibold text-xs text-white dark:text-gray-800 uppercase tracking-widest hover:bg-gray-700 dark:hover:bg-white focus:bg-gray-700 dark:focus:bg-white active:bg-gray-900 dark:active:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition ease-in-out duration-150">Make
-                                            as {{ $todos->status == 'pending' ? 'completed' : 'pending' }}</button>
+                                            as {{ $todo->status == 'pending' ? 'completed' : 'pending' }}</button>
                                     </form>
 
                                     <form method="post" action="{{ route('todo.destroy', ['todo' => $todo]) }}">
